@@ -1,1 +1,438 @@
-Under Construction
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hossein Koozehgar — Senior Backend Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0d0d0f;
+      --bg2:     #121215;
+      --bg3:     #18181c;
+      --border:  #2a2a30;
+      --text:    #e8e8ec;
+      --muted:   #7a7a85;
+      --accent:  #7f77dd;
+      --accent2: #5dcaa5;
+      --mono:    'JetBrains Mono', monospace;
+      --sans:    'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ── */
+    .site { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(13,13,15,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 10;
+    }
+    .logo { font-family: var(--mono); font-size: 13px; color: var(--accent); letter-spacing: 0.05em; }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── Hero ── */
+    .hero { padding: 96px 0 48px; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: start; }
+    .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 { font-size: 42px; font-weight: 300; line-height: 1.15; color: var(--text); margin-bottom: 8px; }
+    h1 span { color: var(--accent); font-weight: 500; }
+    .title { font-size: 16px; color: var(--muted); margin-bottom: 20px; font-weight: 300; }
+    .summary { font-size: 14px; color: var(--muted); line-height: 1.75; max-width: 520px; margin-bottom: 32px; }
+
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 18px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-family: var(--mono);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #9590e8; }
+    .btn-ghost { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Avatar / hero side ── */
+    .hero-side { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+    .avatar {
+      width: 120px; height: 120px;
+      border-radius: 16px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 28px; font-weight: 500; color: var(--accent);
+    }
+    .location { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+    .dot { width: 6px; height: 6px; background: var(--accent2); border-radius: 50%; display: inline-block; }
+    .stats-band { display: flex; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin: 0 0 72px; }
+    .stat-item { flex: 1; text-align: center; padding: 20px 0; }
+    .stat-item:not(:last-child) { border-right: 1px solid var(--border); }
+    .stat-num { display: block; font-size: 28px; font-weight: 300; color: var(--accent); font-family: var(--mono); line-height: 1; }
+    .stat-label { display: block; font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-family: var(--mono); margin-top: 4px; }
+
+    /* ── Section headings ── */
+    section { padding: 72px 0 0; }
+    h2 { font-size: 11px; font-family: var(--mono); color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 28px; }
+
+    /* ── Skills ── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 56px; }
+    .skill-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 16px;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); }
+    .skill-label { font-size: 10px; font-family: var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 10px; }
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .tag { font-size: 11px; padding: 3px 8px; border-radius: 4px; font-family: var(--mono); }
+    .tag.purple { background: rgba(127,119,221,0.1); color: var(--accent); }
+    .tag.green  { background: rgba(93,202,165,0.1); color: var(--accent2); }
+    .tag.gray   { background: var(--bg2); color: var(--muted); border: 1px solid var(--border); }
+
+    /* ── Experience ── */
+    .exp-list { display: flex; flex-direction: column; gap: 5px; }
+    .exp-item {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px;
+      overflow: hidden; transition: border-color 0.2s; cursor: pointer;
+    }
+    .exp-item.active { border-color: rgba(127,119,221,0.4); }
+    .exp-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; gap: 16px; }
+    .exp-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+    .exp-role { font-size: 13px; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .exp-company { font-size: 12px; color: var(--accent); }
+    .exp-date { font-family: var(--mono); font-size: 10px; color: var(--muted); white-space: nowrap; }
+    .exp-body { padding: 0 20px 16px; display: none; }
+    .exp-item.active .exp-body { display: block; }
+    .exp-body ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .exp-body li { font-size: 12px; color: var(--muted); padding-left: 14px; position: relative; line-height: 1.6; }
+    .exp-body li::before { content: '—'; position: absolute; left: 0; color: var(--accent2); }
+    .chevron { font-size: 10px; color: var(--muted); transition: transform 0.2s; }
+    .exp-item.active .chevron { transform: rotate(180deg); }
+
+    /* ── Contact ── */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; padding-bottom: 96px; }
+    .contact-card {
+      background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 16px;
+      text-decoration: none; color: var(--text); transition: border-color 0.2s;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .contact-card:hover { border-color: var(--accent); }
+    .contact-icon { font-family: var(--mono); font-size: 16px; color: var(--accent); width: 28px; text-align: center; }
+    .contact-info { display: flex; flex-direction: column; gap: 2px; }
+    .contact-label { font-size: 10px; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+    .contact-val { font-size: 12px; color: var(--text); }
+
+    /* ── Footer ── */
+    .divider { height: 1px; background: var(--border); margin: 56px 0 0; }
+    .footer { padding: 24px 0; display: flex; justify-content: space-between; align-items: center; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-side { flex-direction: row; align-items: center; }
+      h1 { font-size: 30px; }
+      .nav-links { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="site">
+
+  <!-- Nav -->
+  <nav>
+    <span class="logo">koozehgar.me</span>
+    <div class="nav-links">
+      <a href="#skills">skills</a>
+      <a href="#experience">experience</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div>
+      <h1>Hossein<br><span>Koozehgar</span></h1>
+      <div class="title">Senior Backend Engineer</div>
+      <p class="summary">17+ years designing and building scalable backend systems. Specialized in PHP ecosystems (Laravel, Symfony), API development, and bringing order to complex legacy codebases.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://forms.gle/sRYpkXquWVmPqvtA6" target="_blank">get in touch</a>
+        <a class="btn btn-ghost" href="https://linkedin.com/in/hossein-koozehgar" target="_blank" rel="noopener">linkedin ↗</a>
+      </div>
+    </div>
+    <div class="hero-side">
+      <div class="avatar">HK</div>
+      <div class="location"><span class="dot"></span>Berlin, Germany</div>
+    </div>
+  </div>
+
+  <!-- Stats band -->
+  <div class="stats-band">
+    <div class="stat-item"><span class="stat-num">17+</span><span class="stat-label">years exp.</span></div>
+    <div class="stat-item"><span class="stat-num">6</span><span class="stat-label">companies</span></div>
+    <div class="stat-item"><span class="stat-num">3</span><span class="stat-label">countries</span></div>
+    <div class="stat-item"><span class="stat-num">PHP</span><span class="stat-label">primary lang</span></div>
+  </div>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>technical skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-label">languages</div>
+        <div class="tags">
+          <span class="tag purple">PHP</span>
+          <span class="tag purple">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">frameworks</div>
+        <div class="tags">
+          <span class="tag purple">Laravel</span>
+          <span class="tag purple">Symfony</span>
+          <span class="tag purple">Zend</span>
+          <span class="tag purple">Express</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">databases</div>
+        <div class="tags">
+          <span class="tag green">MySQL</span>
+          <span class="tag green">PostgreSQL</span>
+          <span class="tag green">MongoDB</span>
+          <span class="tag green">Redis</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">devops &amp; tools</div>
+        <div class="tags">
+          <span class="tag gray">Docker</span>
+          <span class="tag gray">Kubernetes</span>
+          <span class="tag gray">Git</span>
+          <span class="tag gray">CI/CD</span>
+          <span class="tag gray">Bash</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">architecture</div>
+        <div class="tags">
+          <span class="tag gray">RESTful API</span>
+          <span class="tag gray">TDD</span>
+          <span class="tag gray">DDD</span>
+          <span class="tag gray">SOLID</span>
+          <span class="tag gray">MVC</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-label">messaging</div>
+        <div class="tags">
+          <span class="tag green">RabbitMQ</span>
+          <span class="tag green">Kafka</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <h2>experience</h2>
+    <div class="exp-list">
+
+      <div class="exp-item active">
+        <div class="exp-header" onclick="toggle(this)">
+          <div class="exp-meta">
+            <span class="exp-role">Senior Software Engineer</span>
+            <span class="exp-company">GIATA GmbH — Berlin</span>
+          </div>
+          <span class="exp-date">May 2024 – Present</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Designed centralized data aggregation system integrating multiple XML and JSON sources</li>
+            <li>Modernized core matching applications, refactored legacy code with comprehensive unit test coverage</li>
+            <li>Contributed to Kubernetes migration and automated CI/CD via Bitbucket pipelines</li>
+            <li>Designed new matching engine module supporting apartment and real estate datasets</li>
+            <li>Implemented specialized RESTful endpoints for large-scale MySQL datasets with complex multi-filter retrieval</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggle(this)">
+          <div class="exp-meta">
+            <span class="exp-role">Senior Software Engineer</span>
+            <span class="exp-company">InstaFreight — Berlin</span>
+          </div>
+          <span class="exp-date">Aug 2022 – May 2024</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Enhanced backend performance by optimizing key workflows in Phalcon-based services</li>
+            <li>Led carrier vetting, tax calculation enhancements, and blocked date optimization for transport planning</li>
+            <li>Introduced automated testing and refactored legacy modules to improve code quality</li>
+            <li>Developed credit note consolidation and bi-weekly factoring processes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggle(this)">
+          <div class="exp-meta">
+            <span class="exp-role">Senior Backend Developer</span>
+            <span class="exp-company">Teknasyon — Istanbul</span>
+          </div>
+          <span class="exp-date">Jun 2021 – Aug 2022</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Developed reusable Laravel package for logging and error tracking across multiple applications</li>
+            <li>Simplified purchase process and introduced Swagger API documentation platform-wide</li>
+            <li>Built and tested purchase processor API to analyze Apple and Google in-app purchase behaviors</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggle(this)">
+          <div class="exp-meta">
+            <span class="exp-role">Senior Backend Developer</span>
+            <span class="exp-company">Estonian Gaming Company — Remote</span>
+          </div>
+          <span class="exp-date">Oct 2020 – Jun 2021</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Designed RESTful APIs for microservices supporting the company's gaming platform</li>
+            <li>Developed multi-currency payment system with Bitcoin support via Block.io</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggle(this)">
+          <div class="exp-meta">
+            <span class="exp-role">Senior Backend Developer</span>
+            <span class="exp-company">Pars Parva Systems — Tehran</span>
+          </div>
+          <span class="exp-date">May 2016 – Sep 2020</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Led backend development of DL-Hosting, File Manager, and Newsletter services</li>
+            <li>Integrated VEEAM Backup Solution for cloud server management and backup automation</li>
+            <li>Improved SSL service integration with new issuer APIs and developed internal tooling</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-header" onclick="toggle(this)">
+          <div class="exp-meta">
+            <span class="exp-role">Head of Development</span>
+            <span class="exp-company">Imen Samaneh Sepehr — Tehran</span>
+          </div>
+          <span class="exp-date">Dec 2007 – May 2016</span>
+          <span class="chevron">▼</span>
+        </div>
+        <div class="exp-body">
+          <ul>
+            <li>Progressed from frontend developer to Technical Manager at Iran's leading CMS provider</li>
+            <li>Directed development of ACL, Multimedia Manager, Photo Album Creator, and Publication Manager modules</li>
+            <li>Modernized legacy systems, implemented mobile API integrations, and mentored new developers</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding-top: 64px;">
+    <h2>contact</h2>
+    <div class="contact-grid">
+      <a class="contact-card" href="https://linkedin.com/in/hossein-koozehgar" target="_blank" rel="noopener">
+        <span class="contact-icon">in</span>
+        <div class="contact-info">
+          <span class="contact-label">linkedin</span>
+          <span class="contact-val">hossein-koozehgar</span>
+        </div>
+      </a>
+      <a class="contact-card" href="https://forms.gle/sRYpkXquWVmPqvtA6" target="_blank" rel="noopener">
+        <span class="contact-icon">✉️</span>
+        <div class="contact-info">
+          <span class="contact-label">Contact Form</span>
+          <span class="contact-val"></span>
+        </div>
+      </a>
+      <div class="contact-card" style="cursor: default;">
+        <span class="contact-icon">✦</span>
+        <div class="contact-info">
+          <span class="contact-label">work status</span>
+          <span class="contact-val" style="color: var(--accent2);">EU Blue Card holder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  function toggle(header) {
+    const item = header.parentElement;
+    const wasActive = item.classList.contains('active');
+    document.querySelectorAll('.exp-item').forEach(el => el.classList.remove('active'));
+    if (!wasActive) item.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
